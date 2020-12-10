@@ -1,12 +1,12 @@
 import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'api_result_state.freezed.dart';
 
 @freezed
-abstract class ApiResultState<T> with $ApiResultState<T> {
+abstract class ApiResultState<T> with _$ApiResultState<T> {
   const factory ApiResultState.success({@required T data}) = Success<T> ;
 
   const factory ApiResultState.failure({@required ApiExceptionState error}) = Failure<T>;
@@ -14,7 +14,7 @@ abstract class ApiResultState<T> with $ApiResultState<T> {
 
 
 @freezed
-abstract class ApiExceptionState with $ApiExceptionState {
+abstract class ApiExceptionState with _$ApiExceptionState {
   const factory ApiExceptionState.requestCancelled() = RequestCancelled;
 
   const factory ApiExceptionState.unauthorizedRequest() = UnauthorizedRequest;

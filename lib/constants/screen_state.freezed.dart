@@ -29,6 +29,13 @@ class _$ScreenStateTearOff {
   }
 
 // ignore: unused_element
+  Success success(dynamic data) {
+    return Success(
+      data,
+    );
+  }
+
+// ignore: unused_element
   Error error() {
     return const Error();
   }
@@ -45,6 +52,7 @@ mixin _$ScreenState {
     @required TResult loading(),
     @required TResult submitting(),
     @required TResult loadMore(),
+    @required TResult success(dynamic data),
     @required TResult error(),
   });
   @optionalTypeArgs
@@ -52,6 +60,7 @@ mixin _$ScreenState {
     TResult loading(),
     TResult submitting(),
     TResult loadMore(),
+    TResult success(dynamic data),
     TResult error(),
     @required TResult orElse(),
   });
@@ -60,6 +69,7 @@ mixin _$ScreenState {
     @required TResult loading(Loading value),
     @required TResult submitting(Submitting value),
     @required TResult loadMore(Loadmore value),
+    @required TResult success(Success value),
     @required TResult error(Error value),
   });
   @optionalTypeArgs
@@ -67,6 +77,7 @@ mixin _$ScreenState {
     TResult loading(Loading value),
     TResult submitting(Submitting value),
     TResult loadMore(Loadmore value),
+    TResult success(Success value),
     TResult error(Error value),
     @required TResult orElse(),
   });
@@ -127,11 +138,13 @@ class _$Loading implements Loading {
     @required TResult loading(),
     @required TResult submitting(),
     @required TResult loadMore(),
+    @required TResult success(dynamic data),
     @required TResult error(),
   }) {
     assert(loading != null);
     assert(submitting != null);
     assert(loadMore != null);
+    assert(success != null);
     assert(error != null);
     return loading();
   }
@@ -142,6 +155,7 @@ class _$Loading implements Loading {
     TResult loading(),
     TResult submitting(),
     TResult loadMore(),
+    TResult success(dynamic data),
     TResult error(),
     @required TResult orElse(),
   }) {
@@ -158,11 +172,13 @@ class _$Loading implements Loading {
     @required TResult loading(Loading value),
     @required TResult submitting(Submitting value),
     @required TResult loadMore(Loadmore value),
+    @required TResult success(Success value),
     @required TResult error(Error value),
   }) {
     assert(loading != null);
     assert(submitting != null);
     assert(loadMore != null);
+    assert(success != null);
     assert(error != null);
     return loading(this);
   }
@@ -173,6 +189,7 @@ class _$Loading implements Loading {
     TResult loading(Loading value),
     TResult submitting(Submitting value),
     TResult loadMore(Loadmore value),
+    TResult success(Success value),
     TResult error(Error value),
     @required TResult orElse(),
   }) {
@@ -228,11 +245,13 @@ class _$Submitting implements Submitting {
     @required TResult loading(),
     @required TResult submitting(),
     @required TResult loadMore(),
+    @required TResult success(dynamic data),
     @required TResult error(),
   }) {
     assert(loading != null);
     assert(submitting != null);
     assert(loadMore != null);
+    assert(success != null);
     assert(error != null);
     return submitting();
   }
@@ -243,6 +262,7 @@ class _$Submitting implements Submitting {
     TResult loading(),
     TResult submitting(),
     TResult loadMore(),
+    TResult success(dynamic data),
     TResult error(),
     @required TResult orElse(),
   }) {
@@ -259,11 +279,13 @@ class _$Submitting implements Submitting {
     @required TResult loading(Loading value),
     @required TResult submitting(Submitting value),
     @required TResult loadMore(Loadmore value),
+    @required TResult success(Success value),
     @required TResult error(Error value),
   }) {
     assert(loading != null);
     assert(submitting != null);
     assert(loadMore != null);
+    assert(success != null);
     assert(error != null);
     return submitting(this);
   }
@@ -274,6 +296,7 @@ class _$Submitting implements Submitting {
     TResult loading(Loading value),
     TResult submitting(Submitting value),
     TResult loadMore(Loadmore value),
+    TResult success(Success value),
     TResult error(Error value),
     @required TResult orElse(),
   }) {
@@ -328,11 +351,13 @@ class _$Loadmore implements Loadmore {
     @required TResult loading(),
     @required TResult submitting(),
     @required TResult loadMore(),
+    @required TResult success(dynamic data),
     @required TResult error(),
   }) {
     assert(loading != null);
     assert(submitting != null);
     assert(loadMore != null);
+    assert(success != null);
     assert(error != null);
     return loadMore();
   }
@@ -343,6 +368,7 @@ class _$Loadmore implements Loadmore {
     TResult loading(),
     TResult submitting(),
     TResult loadMore(),
+    TResult success(dynamic data),
     TResult error(),
     @required TResult orElse(),
   }) {
@@ -359,11 +385,13 @@ class _$Loadmore implements Loadmore {
     @required TResult loading(Loading value),
     @required TResult submitting(Submitting value),
     @required TResult loadMore(Loadmore value),
+    @required TResult success(Success value),
     @required TResult error(Error value),
   }) {
     assert(loading != null);
     assert(submitting != null);
     assert(loadMore != null);
+    assert(success != null);
     assert(error != null);
     return loadMore(this);
   }
@@ -374,6 +402,7 @@ class _$Loadmore implements Loadmore {
     TResult loading(Loading value),
     TResult submitting(Submitting value),
     TResult loadMore(Loadmore value),
+    TResult success(Success value),
     TResult error(Error value),
     @required TResult orElse(),
   }) {
@@ -387,6 +416,136 @@ class _$Loadmore implements Loadmore {
 
 abstract class Loadmore implements ScreenState {
   const factory Loadmore() = _$Loadmore;
+}
+
+/// @nodoc
+abstract class $SuccessCopyWith<$Res> {
+  factory $SuccessCopyWith(Success value, $Res Function(Success) then) =
+      _$SuccessCopyWithImpl<$Res>;
+  $Res call({dynamic data});
+}
+
+/// @nodoc
+class _$SuccessCopyWithImpl<$Res> extends _$ScreenStateCopyWithImpl<$Res>
+    implements $SuccessCopyWith<$Res> {
+  _$SuccessCopyWithImpl(Success _value, $Res Function(Success) _then)
+      : super(_value, (v) => _then(v as Success));
+
+  @override
+  Success get _value => super._value as Success;
+
+  @override
+  $Res call({
+    Object data = freezed,
+  }) {
+    return _then(Success(
+      data == freezed ? _value.data : data as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+class _$Success implements Success {
+  const _$Success(this.data) : assert(data != null);
+
+  @override
+  final dynamic data;
+
+  @override
+  String toString() {
+    return 'ScreenState.success(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Success &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+
+  @override
+  $SuccessCopyWith<Success> get copyWith =>
+      _$SuccessCopyWithImpl<Success>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult loading(),
+    @required TResult submitting(),
+    @required TResult loadMore(),
+    @required TResult success(dynamic data),
+    @required TResult error(),
+  }) {
+    assert(loading != null);
+    assert(submitting != null);
+    assert(loadMore != null);
+    assert(success != null);
+    assert(error != null);
+    return success(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult loading(),
+    TResult submitting(),
+    TResult loadMore(),
+    TResult success(dynamic data),
+    TResult error(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (success != null) {
+      return success(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult loading(Loading value),
+    @required TResult submitting(Submitting value),
+    @required TResult loadMore(Loadmore value),
+    @required TResult success(Success value),
+    @required TResult error(Error value),
+  }) {
+    assert(loading != null);
+    assert(submitting != null);
+    assert(loadMore != null);
+    assert(success != null);
+    assert(error != null);
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult loading(Loading value),
+    TResult submitting(Submitting value),
+    TResult loadMore(Loadmore value),
+    TResult success(Success value),
+    TResult error(Error value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Success implements ScreenState {
+  const factory Success(dynamic data) = _$Success;
+
+  dynamic get data;
+  $SuccessCopyWith<Success> get copyWith;
 }
 
 /// @nodoc
@@ -428,11 +587,13 @@ class _$Error implements Error {
     @required TResult loading(),
     @required TResult submitting(),
     @required TResult loadMore(),
+    @required TResult success(dynamic data),
     @required TResult error(),
   }) {
     assert(loading != null);
     assert(submitting != null);
     assert(loadMore != null);
+    assert(success != null);
     assert(error != null);
     return error();
   }
@@ -443,6 +604,7 @@ class _$Error implements Error {
     TResult loading(),
     TResult submitting(),
     TResult loadMore(),
+    TResult success(dynamic data),
     TResult error(),
     @required TResult orElse(),
   }) {
@@ -459,11 +621,13 @@ class _$Error implements Error {
     @required TResult loading(Loading value),
     @required TResult submitting(Submitting value),
     @required TResult loadMore(Loadmore value),
+    @required TResult success(Success value),
     @required TResult error(Error value),
   }) {
     assert(loading != null);
     assert(submitting != null);
     assert(loadMore != null);
+    assert(success != null);
     assert(error != null);
     return error(this);
   }
@@ -474,6 +638,7 @@ class _$Error implements Error {
     TResult loading(Loading value),
     TResult submitting(Submitting value),
     TResult loadMore(Loadmore value),
+    TResult success(Success value),
     TResult error(Error value),
     @required TResult orElse(),
   }) {

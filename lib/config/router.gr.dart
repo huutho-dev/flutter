@@ -9,15 +9,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../ui/pages/home/home_page.dart';
+import '../ui/pages/main/main_page.dart';
 import '../ui/pages/splash/splash_page.dart';
 
 class Routes {
   static const String splashPage = '/';
-  static const String homePage = '/home-page';
+  static const String mainPage = '/main-page';
   static const all = <String>{
     splashPage,
-    homePage,
+    mainPage,
   };
 }
 
@@ -26,7 +26,7 @@ class Router extends RouterBase {
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
     RouteDef(Routes.splashPage, page: SplashPage),
-    RouteDef(Routes.homePage, page: HomePage),
+    RouteDef(Routes.mainPage, page: MainPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -45,13 +45,13 @@ class Router extends RouterBase {
         transitionDuration: const Duration(milliseconds: 150),
       );
     },
-    HomePage: (data) {
-      final args = data.getArgs<HomePageArguments>(
-        orElse: () => HomePageArguments(),
+    MainPage: (data) {
+      final args = data.getArgs<MainPageArguments>(
+        orElse: () => MainPageArguments(),
       );
       return PageRouteBuilder<dynamic>(
         pageBuilder: (context, animation, secondaryAnimation) =>
-            HomePage(key: args.key),
+            MainPage(key: args.key),
         settings: data,
         transitionsBuilder: TransitionsBuilders.slideLeft,
         transitionDuration: const Duration(milliseconds: 150),
@@ -70,8 +70,8 @@ class SplashPageArguments {
   SplashPageArguments({this.key});
 }
 
-/// HomePage arguments holder class
-class HomePageArguments {
+/// MainPage arguments holder class
+class MainPageArguments {
   final Key key;
-  HomePageArguments({this.key});
+  MainPageArguments({this.key});
 }

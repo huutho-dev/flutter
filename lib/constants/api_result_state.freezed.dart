@@ -103,15 +103,23 @@ class _$SuccessCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
-class _$Success<T> implements Success<T> {
+class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
   const _$Success({@required this.data}) : assert(data != null);
 
   @override
   final T data;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiResultState<$T>.success(data: $data)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiResultState<$T>.success'))
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -228,15 +236,23 @@ class _$FailureCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
-class _$Failure<T> implements Failure<T> {
+class _$Failure<T> with DiagnosticableTreeMixin implements Failure<T> {
   const _$Failure({@required this.error}) : assert(error != null);
 
   @override
   final ApiExceptionState error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiResultState<$T>.failure(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiResultState<$T>.failure'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -534,12 +550,21 @@ class _$RequestCancelledCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$RequestCancelled implements RequestCancelled {
+class _$RequestCancelled
+    with DiagnosticableTreeMixin
+    implements RequestCancelled {
   const _$RequestCancelled();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.requestCancelled()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiExceptionState.requestCancelled'));
   }
 
   @override
@@ -715,12 +740,22 @@ class _$UnauthorizedRequestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$UnauthorizedRequest implements UnauthorizedRequest {
+class _$UnauthorizedRequest
+    with DiagnosticableTreeMixin
+    implements UnauthorizedRequest {
   const _$UnauthorizedRequest();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.unauthorizedRequest()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'ApiExceptionState.unauthorizedRequest'));
   }
 
   @override
@@ -895,12 +930,19 @@ class _$BadRequestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$BadRequest implements BadRequest {
+class _$BadRequest with DiagnosticableTreeMixin implements BadRequest {
   const _$BadRequest();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.badRequest()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiExceptionState.badRequest'));
   }
 
   @override
@@ -1083,15 +1125,23 @@ class _$NotFoundCopyWithImpl<$Res> extends _$ApiExceptionStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$NotFound implements NotFound {
+class _$NotFound with DiagnosticableTreeMixin implements NotFound {
   const _$NotFound(this.reason) : assert(reason != null);
 
   @override
   final String reason;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.notFound(reason: $reason)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiExceptionState.notFound'))
+      ..add(DiagnosticsProperty('reason', reason));
   }
 
   @override
@@ -1278,12 +1328,21 @@ class _$MethodNotAllowedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$MethodNotAllowed implements MethodNotAllowed {
+class _$MethodNotAllowed
+    with DiagnosticableTreeMixin
+    implements MethodNotAllowed {
   const _$MethodNotAllowed();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.methodNotAllowed()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiExceptionState.methodNotAllowed'));
   }
 
   @override
@@ -1459,12 +1518,19 @@ class _$NotAcceptableCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$NotAcceptable implements NotAcceptable {
+class _$NotAcceptable with DiagnosticableTreeMixin implements NotAcceptable {
   const _$NotAcceptable();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.notAcceptable()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiExceptionState.notAcceptable'));
   }
 
   @override
@@ -1640,12 +1706,19 @@ class _$RequestTimeoutCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$RequestTimeout implements RequestTimeout {
+class _$RequestTimeout with DiagnosticableTreeMixin implements RequestTimeout {
   const _$RequestTimeout();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.requestTimeout()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiExceptionState.requestTimeout'));
   }
 
   @override
@@ -1821,12 +1894,19 @@ class _$SendTimeoutCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$SendTimeout implements SendTimeout {
+class _$SendTimeout with DiagnosticableTreeMixin implements SendTimeout {
   const _$SendTimeout();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.sendTimeout()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiExceptionState.sendTimeout'));
   }
 
   @override
@@ -1999,12 +2079,18 @@ class _$ConflictCopyWithImpl<$Res> extends _$ApiExceptionStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$Conflict implements Conflict {
+class _$Conflict with DiagnosticableTreeMixin implements Conflict {
   const _$Conflict();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.conflict()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'ApiExceptionState.conflict'));
   }
 
   @override
@@ -2180,12 +2266,22 @@ class _$InternalServerErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$InternalServerError implements InternalServerError {
+class _$InternalServerError
+    with DiagnosticableTreeMixin
+    implements InternalServerError {
   const _$InternalServerError();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.internalServerError()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'ApiExceptionState.internalServerError'));
   }
 
   @override
@@ -2361,12 +2457,19 @@ class _$NotImplementedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$NotImplemented implements NotImplemented {
+class _$NotImplemented with DiagnosticableTreeMixin implements NotImplemented {
   const _$NotImplemented();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.notImplemented()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiExceptionState.notImplemented'));
   }
 
   @override
@@ -2542,12 +2645,22 @@ class _$ServiceUnavailableCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$ServiceUnavailable implements ServiceUnavailable {
+class _$ServiceUnavailable
+    with DiagnosticableTreeMixin
+    implements ServiceUnavailable {
   const _$ServiceUnavailable();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.serviceUnavailable()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'ApiExceptionState.serviceUnavailable'));
   }
 
   @override
@@ -2723,12 +2836,22 @@ class _$NoInternetConnectionCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$NoInternetConnection implements NoInternetConnection {
+class _$NoInternetConnection
+    with DiagnosticableTreeMixin
+    implements NoInternetConnection {
   const _$NoInternetConnection();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.noInternetConnection()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'ApiExceptionState.noInternetConnection'));
   }
 
   @override
@@ -2904,12 +3027,21 @@ class _$FormatExceptionCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$FormatException implements FormatException {
+class _$FormatException
+    with DiagnosticableTreeMixin
+    implements FormatException {
   const _$FormatException();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.formatException()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiExceptionState.formatException'));
   }
 
   @override
@@ -3085,12 +3217,21 @@ class _$UnableToProcessCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$UnableToProcess implements UnableToProcess {
+class _$UnableToProcess
+    with DiagnosticableTreeMixin
+    implements UnableToProcess {
   const _$UnableToProcess();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.unableToProcess()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiExceptionState.unableToProcess'));
   }
 
   @override
@@ -3276,15 +3417,23 @@ class _$DefaultErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$DefaultError implements DefaultError {
+class _$DefaultError with DiagnosticableTreeMixin implements DefaultError {
   const _$DefaultError(this.error) : assert(error != null);
 
   @override
   final String error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.defaultError(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiExceptionState.defaultError'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -3471,12 +3620,21 @@ class _$UnexpectedErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$UnexpectedError implements UnexpectedError {
+class _$UnexpectedError
+    with DiagnosticableTreeMixin
+    implements UnexpectedError {
   const _$UnexpectedError();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ApiExceptionState.unexpectedError()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiExceptionState.unexpectedError'));
   }
 
   @override
