@@ -1,68 +1,97 @@
-import 'package:basic/config/injection.dart';
-import 'package:basic/resources/local/strings.dart';
+import 'package:basic/config/translations.dart';
 import 'package:basic/resources/models/movie_entity.dart';
 import 'package:basic/ui/widgets/movie_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
+import 'package:get/get.dart';
 
-import 'home_view_model.dart';
+import 'home_controller.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends GetView<HomeController> {
   HomePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<HomeViewModel>.reactive(
-        fireOnModelReadyOnce: true,
-        disposeViewModel: false,
-        initialiseSpecialViewModelsOnce: true,
-        onModelReady: (HomeViewModel model) => model.init(),
-        builder: (BuildContext context, HomeViewModel model, Widget child) {
-          return Container(
-            key: PageStorageKey("HomePage"),
-            child: SingleChildScrollView(
-              padding: EdgeInsets.only(top: 48, bottom: 64),
-              child: Column(
-                children: [
-                  model.busy(model.popularMovies)
+    return Container(
+      key: PageStorageKey(Strings.homeTab),
+      child: SingleChildScrollView(
+        padding: EdgeInsets.only(top: 48, bottom: 64),
+        child: Column(
+          children: [
+            GetBuilder<HomeController>(
+              id: Strings.popularMovies,
+              init: controller,
+              builder: (HomeController controller) {
+                return controller.popularMovies.isEmpty
+                    ? Container()
+                    : ListMoviesWithHeader(
+                        header: Strings.popularMovies,
+                        movies: controller.popularMovies,
+                        onSeeMoreClick: () {
+                          print("onSeeMoreClick");
+                        },
+                      );
+              },
+            ),
+            GetBuilder<HomeController>(
+              id: Strings.trendingMovies,
+              init: controller,
+              builder: (HomeController controller) =>
+                  controller.trendingMovies.isEmpty
                       ? Container()
                       : ListMoviesWithHeader(
-                          header: Strings.popularMovies,
-                          movies: model.popularMovies,
+                          header: Strings.trendingMovies,
+                          movies: controller.trendingMovies,
                           onSeeMoreClick: () {
                             print("onSeeMoreClick");
                           },
                         ),
-                  model.busy(model.trendingMovies)
-                      ? Container()
-                      : ListMoviesWithHeader(
-                          header: Strings.trendingMovies,
-                          movies: model.trendingMovies,
-                        ),
-                  model.busy(model.nowPlayingMovies)
+            ),
+            GetBuilder<HomeController>(
+              id: Strings.nowPlayingMovies,
+              init: controller,
+              builder: (HomeController controller) =>
+                  controller.nowPlayingMovies.isEmpty
                       ? Container()
                       : ListMoviesWithHeader(
                           header: Strings.nowPlayingMovies,
-                          movies: model.nowPlayingMovies,
+                          movies: controller.nowPlayingMovies,
+                          onSeeMoreClick: () {
+                            print("onSeeMoreClick");
+                          },
                         ),
-                  model.busy(model.upcomingMovies)
+            ),
+            GetBuilder<HomeController>(
+              id: Strings.upcomingMovies,
+              init: controller,
+              builder: (HomeController controller) =>
+                  controller.upcomingMovies.isEmpty
                       ? Container()
                       : ListMoviesWithHeader(
                           header: Strings.upcomingMovies,
-                          movies: model.upcomingMovies,
+                          movies: controller.upcomingMovies,
+                          onSeeMoreClick: () {
+                            print("onSeeMoreClick");
+                          },
                         ),
-                  model.busy(model.topRatedMovies)
+            ),
+            GetBuilder<HomeController>(
+              id: Strings.topRatedMovies,
+              init: controller,
+              builder: (HomeController controller) =>
+                  controller.topRatedMovies.isEmpty
                       ? Container()
                       : ListMoviesWithHeader(
                           header: Strings.topRatedMovies,
-                          movies: model.topRatedMovies,
+                          movies: controller.topRatedMovies,
+                          onSeeMoreClick: () {
+                            print("onSeeMoreClick");
+                          },
                         ),
-                ],
-              ),
             ),
-          );
-        },
-        viewModelBuilder: () => locator<HomeViewModel>());
+          ],
+        ),
+      ),
+    );
   }
 }
 

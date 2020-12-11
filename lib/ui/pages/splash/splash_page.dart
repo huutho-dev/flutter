@@ -1,29 +1,35 @@
-import 'package:basic/config/injection.dart';
-import 'package:basic/config/router.gr.dart';
-import 'package:basic/ui/pages/splash/splash_view_model.dart';
+import 'package:basic/config/routers.dart';
+import 'package:basic/constants/api_result.dart';
+import 'package:basic/resources/models/tmdb_configuration.dart';
+import 'package:basic/ui/pages/splash/splash_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
+import 'package:get/get.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends GetView<SplashController> {
   SplashPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<SplashViewModel>.reactive(
-        onModelReady: (SplashViewModel model) => model.checkConfiguration(),
-        builder: (BuildContext context, SplashViewModel model, Widget child) {
-          return Scaffold(
-            body: Container(
-              child: Center(
-                child: model.busy(model.configuration)
-                    ? CircularProgressIndicator()
-                    : GestureDetector(child: Text("NextAction2"), onTap: (){
-                      Navigator.pushNamed(context, Routes.mainPage);
-                },),
-              ),
-            ),
-          );
-        },
-        viewModelBuilder: () => locator<SplashViewModel>());
+    controller.init();
+    return Scaffold(
+      body: Container(
+        child: Center(
+          child: Center(
+            child:
+                ObxValue<Rx<TMDBConfiguration>>((Rx<TMDBConfiguration> data) {
+              if (data.value == null) {
+                return CircularProgressIndicator();
+              }
+              return OutlineButton(
+                child: Text('Goto main'),
+                onPressed: () {
+                  Get.toNamed(Routes.MAIN);
+                },
+              );
+            }, controller.configuration),
+          ),
+        ),
+      ),
+    );
   }
 }

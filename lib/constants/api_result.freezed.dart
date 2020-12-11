@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'api_result_state.dart';
+part of 'api_result.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,17 +14,27 @@ class _$ApiResultStateTearOff {
   const _$ApiResultStateTearOff();
 
 // ignore: unused_element
-  Success<T> success<T>({@required T data}) {
-    return Success<T>(
+  ApiSuccess<T> success<T>({@required T data}) {
+    return ApiSuccess<T>(
       data: data,
     );
   }
 
 // ignore: unused_element
-  Failure<T> failure<T>({@required ApiExceptionState error}) {
-    return Failure<T>(
+  ApiFailure<T> failure<T>({@required ApiExceptionState error}) {
+    return ApiFailure<T>(
       error: error,
     );
+  }
+
+// ignore: unused_element
+  ApiLoading<T> loading<T>() {
+    return ApiLoading<T>();
+  }
+
+// ignore: unused_element
+  ApiComplete<T> complete<T>() {
+    return ApiComplete<T>();
   }
 }
 
@@ -38,22 +48,30 @@ mixin _$ApiResultState<T> {
   TResult when<TResult extends Object>({
     @required TResult success(T data),
     @required TResult failure(ApiExceptionState error),
+    @required TResult loading(),
+    @required TResult complete(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult success(T data),
     TResult failure(ApiExceptionState error),
+    TResult loading(),
+    TResult complete(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult success(Success<T> value),
-    @required TResult failure(Failure<T> value),
+    @required TResult success(ApiSuccess<T> value),
+    @required TResult failure(ApiFailure<T> value),
+    @required TResult loading(ApiLoading<T> value),
+    @required TResult complete(ApiComplete<T> value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult success(Success<T> value),
-    TResult failure(Failure<T> value),
+    TResult success(ApiSuccess<T> value),
+    TResult failure(ApiFailure<T> value),
+    TResult loading(ApiLoading<T> value),
+    TResult complete(ApiComplete<T> value),
     @required TResult orElse(),
   });
 }
@@ -76,35 +94,37 @@ class _$ApiResultStateCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
-abstract class $SuccessCopyWith<T, $Res> {
-  factory $SuccessCopyWith(Success<T> value, $Res Function(Success<T>) then) =
-      _$SuccessCopyWithImpl<T, $Res>;
+abstract class $ApiSuccessCopyWith<T, $Res> {
+  factory $ApiSuccessCopyWith(
+          ApiSuccess<T> value, $Res Function(ApiSuccess<T>) then) =
+      _$ApiSuccessCopyWithImpl<T, $Res>;
   $Res call({T data});
 }
 
 /// @nodoc
-class _$SuccessCopyWithImpl<T, $Res>
+class _$ApiSuccessCopyWithImpl<T, $Res>
     extends _$ApiResultStateCopyWithImpl<T, $Res>
-    implements $SuccessCopyWith<T, $Res> {
-  _$SuccessCopyWithImpl(Success<T> _value, $Res Function(Success<T>) _then)
-      : super(_value, (v) => _then(v as Success<T>));
+    implements $ApiSuccessCopyWith<T, $Res> {
+  _$ApiSuccessCopyWithImpl(
+      ApiSuccess<T> _value, $Res Function(ApiSuccess<T>) _then)
+      : super(_value, (v) => _then(v as ApiSuccess<T>));
 
   @override
-  Success<T> get _value => super._value as Success<T>;
+  ApiSuccess<T> get _value => super._value as ApiSuccess<T>;
 
   @override
   $Res call({
     Object data = freezed,
   }) {
-    return _then(Success<T>(
+    return _then(ApiSuccess<T>(
       data: data == freezed ? _value.data : data as T,
     ));
   }
 }
 
 /// @nodoc
-class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
-  const _$Success({@required this.data}) : assert(data != null);
+class _$ApiSuccess<T> with DiagnosticableTreeMixin implements ApiSuccess<T> {
+  const _$ApiSuccess({@required this.data}) : assert(data != null);
 
   @override
   final T data;
@@ -125,7 +145,7 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Success<T> &&
+        (other is ApiSuccess<T> &&
             (identical(other.data, data) ||
                 const DeepCollectionEquality().equals(other.data, data)));
   }
@@ -135,17 +155,21 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
 
   @override
-  $SuccessCopyWith<T, Success<T>> get copyWith =>
-      _$SuccessCopyWithImpl<T, Success<T>>(this, _$identity);
+  $ApiSuccessCopyWith<T, ApiSuccess<T>> get copyWith =>
+      _$ApiSuccessCopyWithImpl<T, ApiSuccess<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult success(T data),
     @required TResult failure(ApiExceptionState error),
+    @required TResult loading(),
+    @required TResult complete(),
   }) {
     assert(success != null);
     assert(failure != null);
+    assert(loading != null);
+    assert(complete != null);
     return success(data);
   }
 
@@ -154,6 +178,8 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
   TResult maybeWhen<TResult extends Object>({
     TResult success(T data),
     TResult failure(ApiExceptionState error),
+    TResult loading(),
+    TResult complete(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -166,19 +192,25 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult success(Success<T> value),
-    @required TResult failure(Failure<T> value),
+    @required TResult success(ApiSuccess<T> value),
+    @required TResult failure(ApiFailure<T> value),
+    @required TResult loading(ApiLoading<T> value),
+    @required TResult complete(ApiComplete<T> value),
   }) {
     assert(success != null);
     assert(failure != null);
+    assert(loading != null);
+    assert(complete != null);
     return success(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult success(Success<T> value),
-    TResult failure(Failure<T> value),
+    TResult success(ApiSuccess<T> value),
+    TResult failure(ApiFailure<T> value),
+    TResult loading(ApiLoading<T> value),
+    TResult complete(ApiComplete<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -189,37 +221,39 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
   }
 }
 
-abstract class Success<T> implements ApiResultState<T> {
-  const factory Success({@required T data}) = _$Success<T>;
+abstract class ApiSuccess<T> implements ApiResultState<T> {
+  const factory ApiSuccess({@required T data}) = _$ApiSuccess<T>;
 
   T get data;
-  $SuccessCopyWith<T, Success<T>> get copyWith;
+  $ApiSuccessCopyWith<T, ApiSuccess<T>> get copyWith;
 }
 
 /// @nodoc
-abstract class $FailureCopyWith<T, $Res> {
-  factory $FailureCopyWith(Failure<T> value, $Res Function(Failure<T>) then) =
-      _$FailureCopyWithImpl<T, $Res>;
+abstract class $ApiFailureCopyWith<T, $Res> {
+  factory $ApiFailureCopyWith(
+          ApiFailure<T> value, $Res Function(ApiFailure<T>) then) =
+      _$ApiFailureCopyWithImpl<T, $Res>;
   $Res call({ApiExceptionState error});
 
   $ApiExceptionStateCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class _$FailureCopyWithImpl<T, $Res>
+class _$ApiFailureCopyWithImpl<T, $Res>
     extends _$ApiResultStateCopyWithImpl<T, $Res>
-    implements $FailureCopyWith<T, $Res> {
-  _$FailureCopyWithImpl(Failure<T> _value, $Res Function(Failure<T>) _then)
-      : super(_value, (v) => _then(v as Failure<T>));
+    implements $ApiFailureCopyWith<T, $Res> {
+  _$ApiFailureCopyWithImpl(
+      ApiFailure<T> _value, $Res Function(ApiFailure<T>) _then)
+      : super(_value, (v) => _then(v as ApiFailure<T>));
 
   @override
-  Failure<T> get _value => super._value as Failure<T>;
+  ApiFailure<T> get _value => super._value as ApiFailure<T>;
 
   @override
   $Res call({
     Object error = freezed,
   }) {
-    return _then(Failure<T>(
+    return _then(ApiFailure<T>(
       error: error == freezed ? _value.error : error as ApiExceptionState,
     ));
   }
@@ -236,8 +270,8 @@ class _$FailureCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
-class _$Failure<T> with DiagnosticableTreeMixin implements Failure<T> {
-  const _$Failure({@required this.error}) : assert(error != null);
+class _$ApiFailure<T> with DiagnosticableTreeMixin implements ApiFailure<T> {
+  const _$ApiFailure({@required this.error}) : assert(error != null);
 
   @override
   final ApiExceptionState error;
@@ -258,7 +292,7 @@ class _$Failure<T> with DiagnosticableTreeMixin implements Failure<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Failure<T> &&
+        (other is ApiFailure<T> &&
             (identical(other.error, error) ||
                 const DeepCollectionEquality().equals(other.error, error)));
   }
@@ -268,17 +302,21 @@ class _$Failure<T> with DiagnosticableTreeMixin implements Failure<T> {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
   @override
-  $FailureCopyWith<T, Failure<T>> get copyWith =>
-      _$FailureCopyWithImpl<T, Failure<T>>(this, _$identity);
+  $ApiFailureCopyWith<T, ApiFailure<T>> get copyWith =>
+      _$ApiFailureCopyWithImpl<T, ApiFailure<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult success(T data),
     @required TResult failure(ApiExceptionState error),
+    @required TResult loading(),
+    @required TResult complete(),
   }) {
     assert(success != null);
     assert(failure != null);
+    assert(loading != null);
+    assert(complete != null);
     return failure(error);
   }
 
@@ -287,6 +325,8 @@ class _$Failure<T> with DiagnosticableTreeMixin implements Failure<T> {
   TResult maybeWhen<TResult extends Object>({
     TResult success(T data),
     TResult failure(ApiExceptionState error),
+    TResult loading(),
+    TResult complete(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -299,19 +339,25 @@ class _$Failure<T> with DiagnosticableTreeMixin implements Failure<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult success(Success<T> value),
-    @required TResult failure(Failure<T> value),
+    @required TResult success(ApiSuccess<T> value),
+    @required TResult failure(ApiFailure<T> value),
+    @required TResult loading(ApiLoading<T> value),
+    @required TResult complete(ApiComplete<T> value),
   }) {
     assert(success != null);
     assert(failure != null);
+    assert(loading != null);
+    assert(complete != null);
     return failure(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult success(Success<T> value),
-    TResult failure(Failure<T> value),
+    TResult success(ApiSuccess<T> value),
+    TResult failure(ApiFailure<T> value),
+    TResult loading(ApiLoading<T> value),
+    TResult complete(ApiComplete<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -322,11 +368,230 @@ class _$Failure<T> with DiagnosticableTreeMixin implements Failure<T> {
   }
 }
 
-abstract class Failure<T> implements ApiResultState<T> {
-  const factory Failure({@required ApiExceptionState error}) = _$Failure<T>;
+abstract class ApiFailure<T> implements ApiResultState<T> {
+  const factory ApiFailure({@required ApiExceptionState error}) =
+      _$ApiFailure<T>;
 
   ApiExceptionState get error;
-  $FailureCopyWith<T, Failure<T>> get copyWith;
+  $ApiFailureCopyWith<T, ApiFailure<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $ApiLoadingCopyWith<T, $Res> {
+  factory $ApiLoadingCopyWith(
+          ApiLoading<T> value, $Res Function(ApiLoading<T>) then) =
+      _$ApiLoadingCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class _$ApiLoadingCopyWithImpl<T, $Res>
+    extends _$ApiResultStateCopyWithImpl<T, $Res>
+    implements $ApiLoadingCopyWith<T, $Res> {
+  _$ApiLoadingCopyWithImpl(
+      ApiLoading<T> _value, $Res Function(ApiLoading<T>) _then)
+      : super(_value, (v) => _then(v as ApiLoading<T>));
+
+  @override
+  ApiLoading<T> get _value => super._value as ApiLoading<T>;
+}
+
+/// @nodoc
+class _$ApiLoading<T> with DiagnosticableTreeMixin implements ApiLoading<T> {
+  const _$ApiLoading();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ApiResultState<$T>.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'ApiResultState<$T>.loading'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ApiLoading<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult success(T data),
+    @required TResult failure(ApiExceptionState error),
+    @required TResult loading(),
+    @required TResult complete(),
+  }) {
+    assert(success != null);
+    assert(failure != null);
+    assert(loading != null);
+    assert(complete != null);
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult success(T data),
+    TResult failure(ApiExceptionState error),
+    TResult loading(),
+    TResult complete(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult success(ApiSuccess<T> value),
+    @required TResult failure(ApiFailure<T> value),
+    @required TResult loading(ApiLoading<T> value),
+    @required TResult complete(ApiComplete<T> value),
+  }) {
+    assert(success != null);
+    assert(failure != null);
+    assert(loading != null);
+    assert(complete != null);
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult success(ApiSuccess<T> value),
+    TResult failure(ApiFailure<T> value),
+    TResult loading(ApiLoading<T> value),
+    TResult complete(ApiComplete<T> value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApiLoading<T> implements ApiResultState<T> {
+  const factory ApiLoading() = _$ApiLoading<T>;
+}
+
+/// @nodoc
+abstract class $ApiCompleteCopyWith<T, $Res> {
+  factory $ApiCompleteCopyWith(
+          ApiComplete<T> value, $Res Function(ApiComplete<T>) then) =
+      _$ApiCompleteCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class _$ApiCompleteCopyWithImpl<T, $Res>
+    extends _$ApiResultStateCopyWithImpl<T, $Res>
+    implements $ApiCompleteCopyWith<T, $Res> {
+  _$ApiCompleteCopyWithImpl(
+      ApiComplete<T> _value, $Res Function(ApiComplete<T>) _then)
+      : super(_value, (v) => _then(v as ApiComplete<T>));
+
+  @override
+  ApiComplete<T> get _value => super._value as ApiComplete<T>;
+}
+
+/// @nodoc
+class _$ApiComplete<T> with DiagnosticableTreeMixin implements ApiComplete<T> {
+  const _$ApiComplete();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ApiResultState<$T>.complete()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'ApiResultState<$T>.complete'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ApiComplete<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult success(T data),
+    @required TResult failure(ApiExceptionState error),
+    @required TResult loading(),
+    @required TResult complete(),
+  }) {
+    assert(success != null);
+    assert(failure != null);
+    assert(loading != null);
+    assert(complete != null);
+    return complete();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult success(T data),
+    TResult failure(ApiExceptionState error),
+    TResult loading(),
+    TResult complete(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (complete != null) {
+      return complete();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult success(ApiSuccess<T> value),
+    @required TResult failure(ApiFailure<T> value),
+    @required TResult loading(ApiLoading<T> value),
+    @required TResult complete(ApiComplete<T> value),
+  }) {
+    assert(success != null);
+    assert(failure != null);
+    assert(loading != null);
+    assert(complete != null);
+    return complete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult success(ApiSuccess<T> value),
+    TResult failure(ApiFailure<T> value),
+    TResult loading(ApiLoading<T> value),
+    TResult complete(ApiComplete<T> value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (complete != null) {
+      return complete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApiComplete<T> implements ApiResultState<T> {
+  const factory ApiComplete() = _$ApiComplete<T>;
 }
 
 /// @nodoc

@@ -1,30 +1,24 @@
-import 'package:basic/config/injection.dart';
+import 'package:basic/ui/pages/main/childs/discover/discover_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
-
-import 'discover_view_model.dart';
+import 'package:get/get.dart';
 
 class DiscoverPage extends StatelessWidget {
   DiscoverPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print("DiscoverPage => build");
-    return ViewModelBuilder<DiscoverViewModel>.reactive(
-        disposeViewModel: false,
-        initialiseSpecialViewModelsOnce: true,
-        builder: (BuildContext context, DiscoverViewModel model, Widget child) {
-          return Container(
-            key: PageStorageKey("DiscoverPage"),
-            child: ListView.builder(itemBuilder: (BuildContext context, int position){
-                if(position == 0){
-                  return CategoriesWidget();
-                }
-                return Container();
-            } ),
-          );
-        },
-        viewModelBuilder: () => locator<DiscoverViewModel>());
+    return Container(
+      child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          itemCount: 1,
+          itemBuilder: (BuildContext context, int position) {
+            if (position == 0) {
+              return CategoriesWidget();
+            }
+            return Container();
+          }),
+      // child: CategoriesWidget(),
+    );
   }
 }
 
@@ -138,7 +132,7 @@ class CategoriesWidget extends StatelessWidget {
           ),
           ItemCategoryWidget(
             categoryName: "Fantasy",
-            categoryEmojiCharacter: "🪄",
+            categoryEmojiCharacter: "✨",
             backgroundColor: Colors.purple,
           )
         ],

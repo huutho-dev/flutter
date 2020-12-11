@@ -1,7 +1,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'screen_state.freezed.dart';
+part 'screen_result.freezed.dart';
 
 @freezed
 abstract class ScreenState with _$ScreenState {

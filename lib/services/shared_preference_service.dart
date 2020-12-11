@@ -1,28 +1,20 @@
 import 'dart:convert';
 
 import 'package:basic/resources/models/tmdb_configuration.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SharedPreferenceService {
   static const String keyConfiguration = "keyConfiguration";
 
-  SharedPreferences _preferences;
-
-  SharedPreferenceService() {
-    initSharedPreference();
-  }
-
-  Future initSharedPreference() async {
-    _preferences = await SharedPreferences.getInstance();
-  }
+  final _preferences = GetStorage();
 
   Future saveTMDBConfiguration(TMDBConfiguration configuration) async {
     String json = jsonEncode(configuration);
-    await _preferences.setString(keyConfiguration, json);
+    await _preferences.write(keyConfiguration, json);
   }
 
   Future<TMDBConfiguration> getTMDBConfiguration() async {
-    String json = await _preferences.getString(keyConfiguration);
+    String json = await _preferences.read(keyConfiguration);
     return TMDBConfiguration.fromJson(jsonDecode(json));
   }
 }
